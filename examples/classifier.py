@@ -26,7 +26,7 @@ def main(imgfp):
 
     ## 1.2 model
     model = resnet18(pretrained=True)
-    classifier = build_classifier('ytorch', model, gpu_id=1)
+    classifier = build_classifier('pytorch', model, gpu_id=1)
 
     # 2. load image
     img = cv2.imread(imgfp)
