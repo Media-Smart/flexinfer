@@ -10,13 +10,13 @@ class PyTorchClassifier(BaseTask):
         super().__init__(model, gpu_id)
 
     def __call__(self, imgs):
-        '''
+        """
         Args:
             imgs (torch.float32): shape N*3*H*W
 
         Returns:
             feats (torch.float32): shape N*K, K is the number of classes
-        '''
+        """
         if self.gpu_id is not None:
             imgs = imgs.cuda(self.gpu_id)
         with torch.no_grad():
