@@ -4,7 +4,7 @@ A flexible Python front-end inference SDK.
 ## Features
 - Flexible
   
-  FlexInfer is has a Python front-end, which makes it easy to build a computer vision product prototype.
+  FlexInfer has a Python front-end, which makes it easy to build a computer vision product prototype.
 
 - Efficient
   
