@@ -8,7 +8,7 @@ A flexible Python front-end inference SDK.
 
 - Efficient
   
-  Most of time consuming part of Flexinfer is powered by C++ or CUDA, so Flexinfer is also efficient.
+  Most of time consuming part of Flexinfer is powered by C++ or CUDA, so Flexinfer is also efficient. If you are really hungry for efficiency and don't mind the trouble of C++, you can refer to [Cheetahinfer](https://github.com/Media-Smart/cheetahinfer).
 
 ## License
 This project is released under [Apache 2.0 license](https://github.com/Media-Smart/flexinfer/blob/master/LICENSE).
