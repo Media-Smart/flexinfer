@@ -1,6 +1,5 @@
 import cv2
 import torch
-import torch.nn.functional as NF
 import numpy as np
 
 
