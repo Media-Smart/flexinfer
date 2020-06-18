@@ -1,5 +1,5 @@
 # Flexinfer
-A flexible Python front-end inference SDK
+A flexible Python front-end inference SDK.
 
 ## Features
 - Flexible
