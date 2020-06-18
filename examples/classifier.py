@@ -30,9 +30,13 @@ def main(imgfp):
     ## 2.2 model
     model = resnet18(pretrained=True)
     ### build classifier with pytorch model
-    # classifier = build_classifier('pytorch', model)
-    ### build classifier with trt engine
-    classifier = build_classifier('tensorrt', build_from='torch', model=model, dummy_input=torch.randn(1, 3, 224, 224), fp16_mode=True)
+    classifier = build_classifier('pytorch', model)
+    ### build classifier with trt engine from pytorch model
+    # classifier = build_classifier('tensorrt', build_from='torch', model=model, dummy_input=torch.randn(1, 3, 224, 224), fp16_mode=True)
+    ### build classifier with trt engine from onnx model
+    # classifier = build_classifier('tensorrt', build_from='onnx', model='resnet18.onnx', fp16_mode=True)
+    ### build classifier with trt engine from serialized engine
+    # classifier = build_classifier('tensorrt', build_from='engine', model='resnet18.engine')
 
     # 3. load image
     img = cv2.imread(imgfp)
