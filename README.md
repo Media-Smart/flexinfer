@@ -3,9 +3,12 @@ A flexible Python front-end inference SDK
 
 ## Features
 - Flexible
+  
   Flexinfer is has a Python front-end, which makes it easy to build a computer vision product prototype.
+
 - Efficient
-  Most of time consuming part of Flexinfer is written in C++ or CUDA, so Flexinfer is also efficient.
+  
+  Most of time consuming part of Flexinfer is powered by C++ or CUDA, so Flexinfer is also efficient.
 
 ## License
 This project is released under [Apache 2.0 license](https://github.com/Media-Smart/flexinfer/blob/master/LICENSE).
