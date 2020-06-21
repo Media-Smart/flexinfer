@@ -1,7 +1,7 @@
 import os
 
 import torch
-from volksdep.converters import TRTEngine
+from volksdep.converters import torch2trt, onnx2trt, load
 
 from .base_task import BaseTask
 
@@ -22,20 +22,28 @@ class PyTorchClassifier(BaseTask):
         Returns:
             feats (torch.float32): shape N*K, K is the number of classes
         """
-        if self.use_gpu:
-            imgs = imgs.cuda()
         with torch.no_grad():
+            if self.use_gpu:
+                imgs = imgs.cuda()
             outp = self.model(imgs)
-        if self.use_gpu:
-            outp = outp.cpu()
-        outp = outp.numpy()
+            if self.use_gpu:
+                outp = outp.cpu()
+            outp = outp.numpy()
 
         return outp
 
 
 class TRTClassifier(BaseTask):
     def __init__(self, build_from, *args, **kwargs):
-        model = TRTEngine(build_from, *args, **kwargs)
+        if build_from == 'torch':
+            func = torch2trt
+        elif build_from == 'onnx':
+            func = onnx2trt
+        elif build_from == 'engine':
+            func = load
+        else:
+            raise ValueError('Unsupported build_from value %s, valid build_from value is torch, onnx and engine' % build_from)
+        model = func(*args, **kwargs)
         super().__init__(model)
 
     def __call__(self, imgs):
@@ -46,7 +54,11 @@ class TRTClassifier(BaseTask):
         Returns:
             feats (np.float32): shape N*K, K is the number of classes
         """
-        outp = self.model.inference(imgs)
+        with torch.no_grad():
+            imgs = imgs.cuda()
+            outp = self.model(imgs)
+            outp = outp.cpu()
+        outp = outp.numpy()
 
         return outp
 
