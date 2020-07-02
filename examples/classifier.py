@@ -14,16 +14,17 @@ from flexinfer.utils import set_device
 
 
 def main(imgfp):
+    gpu_id = 0
+    use_gpu = True if gpu_id is not None else False
     # 1. set gpu id, default gpu id is 0
-    set_device(gpu_id=0)
+    set_device(gpu_id=gpu_id)
 
     # 2. prepare for transfoms and model
     ## 2.1 transforms
     transform = TF.Compose([
         TF.Resize((224, 224)),
-        TF.ColorSpaceConvert(),
-        TF.Normalize(),
-        TF.ToTensor(),
+        TF.ToTensor(use_gpu=use_gpu),
+        TF.Normalize(use_gpu=use_gpu),
     ])
     batchify = TF.Batchify(transform)
 

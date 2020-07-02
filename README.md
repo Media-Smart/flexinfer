@@ -1,7 +1,14 @@
-# flexinfer
-A flexible Python front-end inference SDK
+# FlexInfer
+A flexible Python front-end inference SDK.
 
 ## Features
+- Flexible
+  
+  FlexInfer has a Python front-end, which makes it easy to build a computer vision product prototype.
+
+- Efficient
+  
+  Most of time consuming part of Flexinfer is powered by C++ or CUDA, so FlexInfer is also efficient. If you are really hungry for efficiency and don't mind the trouble of C++, you can refer to [CheetahInfer](https://github.com/Media-Smart/cheetahinfer).
 
 ## License
 This project is released under [Apache 2.0 license](https://github.com/Media-Smart/flexinfer/blob/master/LICENSE).

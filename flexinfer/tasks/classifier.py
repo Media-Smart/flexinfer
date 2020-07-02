@@ -20,7 +20,7 @@ class PyTorchClassifier(BaseTask):
             imgs (torch.float32): shape N*3*H*W
 
         Returns:
-            feats (torch.float32): shape N*K, K is the number of classes
+            feats (np.float32): shape N*K, K is the number of classes
         """
         with torch.no_grad():
             if self.use_gpu:
@@ -69,4 +69,5 @@ def build_classifier(source, *args, **kwargs):
     elif source.lower() == 'tensorrt':
         return TRTClassifier(*args, **kwargs)
     else:
-        raise NotImplementedError('Classifier powered by %s not implemented' % source)
+        raise NotImplementedError('Classifier powered by %s not implemented' %
+                                  source)
