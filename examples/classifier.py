@@ -15,9 +15,9 @@ from flexinfer.utils import set_device
 
 def main(imgfp):
     gpu_id = 0
-    use_gpu = True if gpu_id is not None else False
     # 1. set gpu id, default gpu id is 0
     set_device(gpu_id=gpu_id)
+    use_gpu = torch.cuda.is_available()
 
     # 2. prepare for transfoms and model
     ## 2.1 transforms
@@ -33,12 +33,17 @@ def main(imgfp):
     ### build classifier with pytorch model
     classifier = build_classifier('pytorch', model)
     ### build classifier with trt engine from pytorch model
-    # classifier = build_classifier('tensorrt', build_from='torch', model=model, dummy_input=torch.randn(1, 3, 224, 224),
-    #                               max_batch_size=2, fp16_mode=True)
+    # dummy_input = torch.randn(1, 3, 224, 224)
+    # classifier = build_classifier(
+    #     'tensorrt', build_from='torch', model=model, dummy_input=dummy_input,
+    #     max_batch_size=2, fp16_mode=True)
     ### build classifier with trt engine from onnx model
-    # classifier = build_classifier('tensorrt', build_from='onnx', model='resnet18.onnx', max_batch_size=2, fp16_mode=True)
+    # classifier = build_classifier(
+    #     'tensorrt', build_from='onnx', model='resnet18.onnx',
+    #     max_batch_size=2, fp16_mode=True)
     ### build classifier with trt engine from serialized engine
-    # classifier = build_classifier('tensorrt', build_from='engine', engine='resnet18.engine')
+    # classifier = build_classifier(
+    #     'tensorrt', build_from='engine', engine='resnet18.engine')
 
     # 3. load image
     img = cv2.imread(imgfp)

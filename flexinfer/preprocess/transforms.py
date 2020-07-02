@@ -75,7 +75,7 @@ class Normalize:
         self.mean = torch.tensor(mean, dtype=torch.float32).view(1, 3, 1, 1)
         self.std = torch.tensor(std, dtype=torch.float32).view(1, 3, 1, 1)
         self.bgr2rgb = bgr2rgb
-        if use_gpu is not None:
+        if use_gpu:
             self.mean = self.mean.cuda()
             self.std = self.std.cuda()
 
