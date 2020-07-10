@@ -63,3 +63,4 @@ python examples/classifier.py image_file
 All sample files are in examples directory.
 
 ## Contact
+This repository is currently maintained by Hongxiang Cai ([@hxcai](http://github.com/hxcai)), Yichao Xiong ([@mileistone](https://github.com/mileistone)).
