@@ -28,13 +28,37 @@ class Resize:
     def __call__(self, img):
         """
         Args:
-            img(np.ndarray): image, shape 1*C*H*W
+            img(np.ndarray): image, shape H*W*C
         """
         if isinstance(img, np.ndarray):
             rimg = cv2.resize(img, self.dst_shape)  # TODO time consuming
         else:
             raise TypeError('img shoud be np.ndarray. Got %s' % type(img))
         return rimg
+
+
+class PadIfNeeded:
+    def __init__(self, height, width, mode=cv2.BORDER_CONSTANT,
+                 value=(123.675, 116.280, 103.530)):
+        self.height = height
+        self.width = width
+        self.mode = mode
+        self.value = value
+
+    def __call__(self, img):
+        """
+        Args:
+            img(np.ndarray): image, shape H*W*C
+        """
+        h, w, c = img.shape
+
+        assert h <= self.height and w <= self.width
+        if isinstance(img, np.ndarray):
+            img = cv2.copyMakeBorder(img, 0, self.height - h, 0, self.width - w,
+                                     self.mode, value=self.value)
+        else:
+            raise TypeError('img shoud be np.ndarray. Got %s' % type(img))
+        return img
 
 
 class ToTensor:

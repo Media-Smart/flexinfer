@@ -4,7 +4,7 @@ from volksdep.converters import onnx2trt, load
 from .base_task import BaseTask
 
 
-class TRTClassifier(BaseTask):
+class TRTSegmentor(BaseTask):
     def __init__(self, build_from, *args, **kwargs):
         if build_from == 'onnx':
             func = onnx2trt
@@ -21,16 +21,14 @@ class TRTClassifier(BaseTask):
             imgs (torch.float32): shape N*3*H*W
 
         Returns:
-            feats (np.float32): shape N*K, K is the number of classes
+            feats (torch.): shape N*K*H*W, K is the number of classes
         """
         with torch.no_grad():
             imgs = imgs.cuda()
             outp = self.model(imgs)
-            outp = outp.cpu()
-        outp = outp.numpy()
 
         return outp
 
 
-def build_classifier(*args, **kwargs):
-    return TRTClassifier(*args, **kwargs)
+def build_segmentor(*args, **kwargs):
+    return TRTSegmentor(*args, **kwargs)

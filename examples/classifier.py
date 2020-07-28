@@ -2,9 +2,8 @@ import os
 import sys
 import argparse
 
-import torch
-from torchvision.models import resnet18
 import cv2
+import torch
 
 sys.path.insert(0, os.path.abspath('.'))
 
@@ -29,21 +28,12 @@ def main(imgfp):
     batchify = TF.Batchify(transform)
 
     ## 2.2 model
-    model = resnet18(pretrained=True)
-    ### build classifier with pytorch model
-    classifier = build_classifier('pytorch', model)
-    ### build classifier with trt engine from pytorch model
-    # dummy_input = torch.randn(1, 3, 224, 224)
-    # classifier = build_classifier(
-    #     'tensorrt', build_from='torch', model=model, dummy_input=dummy_input,
-    #     max_batch_size=2, fp16_mode=True)
     ### build classifier with trt engine from onnx model
-    # classifier = build_classifier(
-    #     'tensorrt', build_from='onnx', model='resnet18.onnx',
-    #     max_batch_size=2, fp16_mode=True)
+    classifier = build_classifier(build_from='onnx', model='resnet18.onnx',
+                                  max_batch_size=2, fp16_mode=True)
     ### build classifier with trt engine from serialized engine
     # classifier = build_classifier(
-    #     'tensorrt', build_from='engine', engine='resnet18.engine')
+    #                             build_from='engine', engine='resnet18.engine')
 
     # 3. load image
     img = cv2.imread(imgfp)
