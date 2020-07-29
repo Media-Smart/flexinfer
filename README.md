@@ -31,7 +31,7 @@ We have tested the following versions of OS and softwares:
 - PyTorch 1.4.0
 - CUDA: 10.2
 
-### Install flexinfer
+### Install FlexInfer
 
 a. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
 
