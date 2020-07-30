@@ -40,7 +40,7 @@ def main(imgfp):
     ## 2.3 model
     ### build segmentor with trt engine from onnx model
     segmentor = build_segmentor(build_from='onnx',
-                                model='checkpoint/voc_deeplabv3.onnx',
+                                model='voc_deeplabv3.onnx',
                                 max_batch_size=2, fp16_mode=True)
     ### build segmentor with trt engine from serialized engine
     # segmentor = build_segmentor(build_from='engine',
