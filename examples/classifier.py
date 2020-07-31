@@ -28,12 +28,9 @@ def main(imgfp):
     batchify = TF.Batchify(transform)
 
     ## 2.2 model
-    ### build classifier with trt engine from onnx model
-    classifier = build_classifier(build_from='onnx', model='resnet18.onnx',
+    ###build segmentor with trt engine from onnx model or serialized engine
+    classifier = build_classifier(checkpoint=args.checkpoint,
                                   max_batch_size=2, fp16_mode=True)
-    ### build classifier with trt engine from serialized engine
-    # classifier = build_classifier(
-    #                             build_from='engine', engine='resnet18.engine')
 
     # 3. load image
     img = cv2.imread(imgfp)
@@ -48,5 +45,7 @@ def main(imgfp):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Classifier demo')
     parser.add_argument('imgfp', type=str, help='path to image file path')
+    parser.add_argument('checkpoint',
+                        type=str, help='checkpoint file path')
     args = parser.parse_args()
     main(args.imgfp)

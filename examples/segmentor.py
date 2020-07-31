@@ -13,7 +13,7 @@ from flexinfer.postprocess import postprocess as PP
 from flexinfer.utils import set_device
 
 
-def main(imgfp):
+def main(args):
     gpu_id = 0
     # 1. set gpu id, default gpu id is 0
     set_device(gpu_id=gpu_id)
@@ -38,16 +38,13 @@ def main(imgfp):
     ])
 
     ## 2.3 model
-    ### build segmentor with trt engine from onnx model
-    segmentor = build_segmentor(build_from='onnx',
-                                model='checkpoint/voc_deeplabv3.onnx',
+    ###build segmentor with trt engine from onnx model or serialized engine
+    segmentor = build_segmentor(checkpoint=args.checkpoint,
                                 max_batch_size=2, fp16_mode=True)
-    ### build segmentor with trt engine from serialized engine
-    # segmentor = build_segmentor(build_from='engine',
-    #                             engine='voc_deeplabv3.engine')
+
 
     # 3. load image
-    img = cv2.imread(imgfp)
+    img = cv2.imread(args.imgfp)
 
     imgs = [img, img]
     shape_list = [img.shape[:2] for img in imgs]
@@ -56,12 +53,13 @@ def main(imgfp):
     tensor = batchify(imgs)
     outp = segmentor(tensor)
     outp = postprocess(outp, **dict(shape_list=shape_list))
-
     print(outp)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Segmentor demo')
     parser.add_argument('imgfp', type=str, help='path to image file path')
+    parser.add_argument('checkpoint',
+                        type=str, help='checkpoint file path')
     args = parser.parse_args()
-    main(args.imgfp)
+    main(args)

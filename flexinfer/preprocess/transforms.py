@@ -4,6 +4,12 @@ import numpy as np
 
 
 class Compose:
+    """Composes several transforms together.
+
+    Args:
+        transforms (list of ``Transform`` objects): list of transforms to compose.
+
+    """
     def __init__(self, transforms):
         self.transforms = transforms
 
@@ -86,8 +92,8 @@ class ToTensor:
 
 class Normalize:
     def __init__(self,
-                 mean=[123.675, 116.28, 103.53],
-                 std=[58.395, 57.12, 57.375],
+                 mean=(123.675, 116.28, 103.53),
+                 std=(58.395, 57.12, 57.375),
                  use_gpu=True,
                  bgr2rgb=True):
         """
