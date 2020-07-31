@@ -8,7 +8,7 @@ A flexible Python front-end inference SDK.
 
 - Efficient
   
-  Most of time consuming part of Flexinfer is powered by C++ or CUDA, so FlexInfer is also efficient. If you are really hungry for efficiency and don't mind the trouble of C++, you can refer to [CheetahInfer](https://github.com/Media-Smart/cheetahinfer).
+  Most of time consuming part of FlexInfer is powered by C++ or CUDA, so FlexInfer is also efficient. If you are really hungry for efficiency and don't mind the trouble of C++, you can refer to [CheetahInfer](https://github.com/Media-Smart/cheetahinfer).
 
 ## License
 This project is released under [Apache 2.0 license](https://github.com/Media-Smart/flexinfer/blob/master/LICENSE).
@@ -31,7 +31,7 @@ We have tested the following versions of OS and softwares:
 - PyTorch 1.4.0
 - CUDA: 10.2
 
-### Install flexinfer
+### Install FlexInfer
 
 a. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
 
