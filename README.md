@@ -66,7 +66,10 @@ c. Example of deploying a segmentor, you can run the following statement to gene
 ```shell
 python examples/segmentor.py checkpoint_path image_file
 ```
-All sample files are in examples directory.
+d. Example of deploying a text recognizer, you can run the following statement to generate recognized text.
+```shell
+python examples/text_recognizer.py checkpoint_path image_file
+```
 
 ## Contact
 This repository is currently maintained by Hongxiang Cai ([@hxcai](http://github.com/hxcai)), Yichao Xiong ([@mileistone](https://github.com/mileistone)).
