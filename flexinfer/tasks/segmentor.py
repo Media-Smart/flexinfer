@@ -8,12 +8,13 @@ class TRTSegmentor(BaseTask):
     def __init__(self, checkpoint, *args, **kwargs):
         if checkpoint.endswith('onnx'):
             func = onnx2trt
+            model = func(checkpoint, *args, **kwargs)
         elif checkpoint.endswith('engine'):
             func = load
+            model = func(checkpoint)
         else:
             raise ValueError(
                 'Unsupported build_from value %s, valid build_from value is torch, onnx and engine' % checkpoint)
-        model = func(checkpoint, *args, **kwargs)
         super().__init__(model)
 
     def __call__(self, imgs):
