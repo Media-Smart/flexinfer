@@ -60,11 +60,11 @@ a. Generate onnx model or trt engine by using volksdep.
 
 b. Example of deploying a classifier, you can run the following statement to classify an image.
 ```shell
-python examples/classifier.py image_file checkpoint
+python examples/classifier.py image_file checkpoint_path
 ```
 c. Example of deploying a segmentor, you can run the following statement to generate segmentation mask.
 ```shell
-python examples/segmentor.py image_file checkpoint
+python examples/segmentor.py image_file checkpoint_path
 ```
 All sample files are in examples directory.
 

@@ -8,13 +8,14 @@ class Compose:
         postprocess (list of ``Postprocess`` objects): list of postprocess to compose.
 
     """
+
     def __init__(self, postprocess):
         self.postprocess = postprocess
 
     def __call__(self, inp, **kwargs):
         """
         Args:
-            inp(torch.tensor): shape B*C*H*W
+            inp(torch.Tensor): shape B*C*H*W
         """
         for pp in self.postprocess:
             inp = pp(inp, **kwargs)
@@ -22,17 +23,17 @@ class Compose:
 
 
 class SoftmaxProcess:
-    def __call__(self, inp, **kwargs):
+    def __call__(self, inp, dim=1, **kwargs):
         """
         Args:
-            inp(torch.tensor): shape B*C*H*W
+            inp(torch.Tensor): shape B*C*H*W
         """
         if isinstance(inp, torch.Tensor):
-            output = inp.softmax(dim=1)
-            _, output = torch.max(output, dim=1)
+            output = inp.softmax(dim=dim)
+            _, output = torch.max(output, dim=dim)
         else:
             raise TypeError('inp shoud be torch.Tensor. Got %s' % type(inp))
-        return output.unsqueeze(dim=1)
+        return output.unsqueeze(dim=dim)
 
 
 class SigmoidProcess:
@@ -46,7 +47,7 @@ class SigmoidProcess:
     def __call__(self, inp, **kwargs):
         """
         Args:
-            inp(torch.tensor): shape B*C*H*W
+            inp(torch.Tensor): shape B*C*H*W
         """
         if isinstance(inp, torch.Tensor):
             output = inp.sigmoid()
@@ -59,16 +60,14 @@ class SigmoidProcess:
 
 
 class InversePad:
-    def __call__(self, inp, **kwargs):
+    def __call__(self, inp, shape_list, **kwargs):
         """
         Args:
-            inp(torch.tensor): shape B*C*H*W
+            inp(torch.Tensor): shape B*C*H*W
         """
         imgs_pp = []
 
-        shape_list = kwargs['shape_list']
         assert inp.shape[0] == len(shape_list)
-
         if isinstance(inp, torch.Tensor):
             output_list = inp.split(1, 0)
             for output, shape in zip(output_list, shape_list):

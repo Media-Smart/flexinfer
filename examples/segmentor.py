@@ -52,14 +52,14 @@ def main(args):
     # 4. inference
     tensor = batchify(imgs)
     outp = segmentor(tensor)
-    outp = postprocess(outp, **dict(shape_list=shape_list))
+    outp = postprocess(outp, dim=1, shape_list=shape_list)
     print(outp)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Segmentor demo')
-    parser.add_argument('imgfp', type=str, help='path to image file path')
     parser.add_argument('checkpoint',
                         type=str, help='checkpoint file path')
+    parser.add_argument('imgfp', type=str, help='path to image file path')
     args = parser.parse_args()
     main(args)

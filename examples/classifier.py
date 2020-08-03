@@ -44,8 +44,8 @@ def main(imgfp):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Classifier demo')
-    parser.add_argument('imgfp', type=str, help='path to image file path')
     parser.add_argument('checkpoint',
                         type=str, help='checkpoint file path')
+    parser.add_argument('imgfp', type=str, help='path to image file path')
     args = parser.parse_args()
     main(args.imgfp)
