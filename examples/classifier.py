@@ -1,13 +1,13 @@
+import argparse
 import os
 import sys
-import argparse
 
 import cv2
 import torch
 
 sys.path.insert(0, os.path.abspath('.'))
 
-from flexinfer.tasks import build_classifier
+from flexinfer.tasks import build_inferencer
 from flexinfer.preprocess import transforms as TF
 from flexinfer.utils import set_device
 
@@ -29,7 +29,7 @@ def main(imgfp):
 
     ## 2.2 model
     ###build segmentor with trt engine from onnx model or serialized engine
-    classifier = build_classifier(checkpoint=args.checkpoint,
+    classifier = build_inferencer(checkpoint=args.checkpoint,
                                   max_batch_size=2, fp16_mode=True)
 
     # 3. load image

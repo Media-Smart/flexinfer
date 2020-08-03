@@ -4,7 +4,7 @@ from volksdep.converters import onnx2trt, load
 from .base_task import BaseTask
 
 
-class TRTClassifier(BaseTask):
+class Inferencer(BaseTask):
     def __init__(self, checkpoint, *args, **kwargs):
         if checkpoint.endswith('onnx'):
             func = onnx2trt
@@ -32,5 +32,5 @@ class TRTClassifier(BaseTask):
         return outp
 
 
-def build_classifier(*args, **kwargs):
-    return TRTClassifier(*args, **kwargs)
+def build_inferencer(*args, **kwargs):
+    return Inferencer(*args, **kwargs)
