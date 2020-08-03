@@ -4,7 +4,7 @@ from volksdep.converters import onnx2trt, load
 from .base_task import BaseTask
 
 
-class TRTClassifier(BaseTask):
+class TRTTextRcognizer(BaseTask):
     def __init__(self, checkpoint, *args, **kwargs):
         if checkpoint.endswith('onnx'):
             func = onnx2trt
@@ -12,9 +12,8 @@ class TRTClassifier(BaseTask):
             func = load
         else:
             raise ValueError(
-                'Unsupported build_from value %s, valid build_from value is torch, onnx and engine' % checkpoint)
+                'Unsupported build_from value %s, valid build_from value is torch, onnx and engine' % build_from)
         model = func(checkpoint, *args, **kwargs)
-
         super().__init__(model)
 
     def __call__(self, imgs):
@@ -32,5 +31,5 @@ class TRTClassifier(BaseTask):
         return outp
 
 
-def build_classifier(*args, **kwargs):
-    return TRTClassifier(*args, **kwargs)
+def build_text_recognizer(*args, **kwargs):
+    return TRTTextRcognizer(*args, **kwargs)

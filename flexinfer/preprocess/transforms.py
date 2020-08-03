@@ -4,12 +4,6 @@ import numpy as np
 
 
 class Compose:
-    """Composes several transforms together.
-
-    Args:
-        transforms (list of ``Transform`` objects): list of transforms to compose.
-
-    """
     def __init__(self, transforms):
         self.transforms = transforms
 
@@ -24,12 +18,13 @@ class Compose:
 
 
 class Resize:
-    def __init__(self, dst_shape):
+    def __init__(self, dst_shape, interp):
         """
         Args:
             dst_shape(int list): [width, height]
         """
         self.dst_shape = dst_shape
+        self.interp = interp
 
     def __call__(self, img):
         """
@@ -37,7 +32,7 @@ class Resize:
             img(np.ndarray): image, shape H*W*C
         """
         if isinstance(img, np.ndarray):
-            rimg = cv2.resize(img, self.dst_shape)  # TODO time consuming
+            rimg = cv2.resize(img, self.dst_shape, interpolation=self.interp)  # TODO time consuming
         else:
             raise TypeError('img shoud be np.ndarray. Got %s' % type(img))
         return rimg
@@ -92,8 +87,9 @@ class ToTensor:
 
 class Normalize:
     def __init__(self,
-                 mean=(123.675, 116.28, 103.53),
-                 std=(58.395, 57.12, 57.375),
+                 mean=[123.675, 116.28, 103.53],
+                 std=[58.395, 57.12, 57.375],
+                 gray=False,
                  use_gpu=True,
                  bgr2rgb=True):
         """
@@ -102,8 +98,12 @@ class Normalize:
             std(float list): std of [r, g, b] channel
         """
         # n*c*h*w
-        self.mean = torch.tensor(mean, dtype=torch.float32).view(1, 3, 1, 1)
-        self.std = torch.tensor(std, dtype=torch.float32).view(1, 3, 1, 1)
+
+        shape = (1, 1, 1, 1) if gray else (1, 3, 1, 1)
+
+        self.mean = torch.tensor(mean, dtype=torch.float32).view(*shape)
+        self.std = torch.tensor(std, dtype=torch.float32).view(*shape)
+        self.gray = gray
         self.bgr2rgb = bgr2rgb
         if use_gpu:
             self.mean = self.mean.cuda()
@@ -115,7 +115,7 @@ class Normalize:
             img(torch.Tensor): image, shape 1*C*H*W
         """
         if isinstance(img, torch.Tensor):
-            if self.bgr2rgb:
+            if self.bgr2rgb and not self.gray:
                 # n*c*h*w
                 img = img[:, [2, 1, 0], :, :]  # bgr to rgb
             img = (img - self.mean) / self.std  # time consuming on cpu
