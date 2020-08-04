@@ -65,7 +65,7 @@ python examples/classifier.py checkpoint_path image_file
 
 ## [Media-smart toolboxes](https://github.com/Media-Smart)
 
-We provide some toolboxes to do train, test and deploy:
+We provide some toolboxes for training, testing and deploying:
 
 - [x] Classification ([vedacls](https://github.com/Media-Smart/vedacls))
 
