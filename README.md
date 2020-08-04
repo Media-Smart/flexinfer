@@ -67,11 +67,11 @@ python examples/classifier.py checkpoint_path image_file
 
 We provide some toolboxes to do train, test and deploy:
 
--[x] Classification ([vedacls](https://github.com/Media-Smart/vedacls))
+- [x] Classification ([vedacls](https://github.com/Media-Smart/vedacls))
 
--[x] Segmentation ([vedaseg](https://github.com/Media-Smart/vedaseg))
+- [x] Segmentation ([vedaseg](https://github.com/Media-Smart/vedaseg))
 
--[x] Scene text recognition ([vedastr](https://github.com/Media-Smart/vedastr))
+- [x] Scene text recognition ([vedastr](https://github.com/Media-Smart/vedastr))
 
 ## Contact
 This repository is currently maintained by Yuxin Zou ([@Yuxin Zou](https://github.com/YuxinZou)),
