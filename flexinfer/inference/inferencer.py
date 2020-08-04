@@ -1,10 +1,8 @@
 import torch
 from volksdep.converters import onnx2trt, load
 
-from .base_task import BaseTask
 
-
-class Inferencer(BaseTask):
+class Inferencer:
     def __init__(self, checkpoint, *args, **kwargs):
         if checkpoint.endswith('onnx'):
             func = onnx2trt

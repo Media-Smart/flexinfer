@@ -4,6 +4,11 @@ import numpy as np
 
 
 class Compose:
+    """Composes several transforms together.
+       Args:
+           transforms (list of ``Transform`` objects): list of transforms to compose.
+       """
+
     def __init__(self, transforms):
         self.transforms = transforms
 
@@ -18,13 +23,13 @@ class Compose:
 
 
 class Resize:
-    def __init__(self, dst_shape, interp):
+    def __init__(self, dst_shape, interpolation):
         """
         Args:
             dst_shape(int list): [width, height]
         """
         self.dst_shape = dst_shape
-        self.interp = interp
+        self.interp = interpolation
 
     def __call__(self, img):
         """
