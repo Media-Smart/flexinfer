@@ -1,29 +1,26 @@
 import torch
 from volksdep.converters import onnx2trt, load
 
-from .base_task import BaseTask
 
-
-class TRTClassifier(BaseTask):
+class Inferencer:
     def __init__(self, checkpoint, *args, **kwargs):
         if checkpoint.endswith('onnx'):
             func = onnx2trt
-            model = func(checkpoint, *args, **kwargs)
+            self.model = func(checkpoint, *args, **kwargs)
         elif checkpoint.endswith('engine'):
             func = load
-            model = func(checkpoint)
+            self.model = func(checkpoint)
         else:
             raise ValueError(
                 'Unsupported build_from value %s, valid build_from value is torch, onnx and engine' % checkpoint)
-        super().__init__(model)
 
     def __call__(self, imgs):
         """
         Args:
-            imgs (torch.float32): shape N*3*H*W
+            imgs (torch.float32): shape N*C*H*W
 
         Returns:
-            feats (np.float32): shape N*K, K is the number of classes
+            outp (torch.float32)
         """
         with torch.no_grad():
             imgs = imgs.cuda()
@@ -32,5 +29,5 @@ class TRTClassifier(BaseTask):
         return outp
 
 
-def build_classifier(*args, **kwargs):
-    return TRTClassifier(*args, **kwargs)
+def build_inferencer(*args, **kwargs):
+    return Inferencer(*args, **kwargs)

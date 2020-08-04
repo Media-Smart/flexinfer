@@ -1,14 +1,14 @@
+import argparse
 import os
 import sys
-import argparse
 
 import cv2
 import torch
 
 sys.path.insert(0, os.path.abspath('.'))
 
-from flexinfer.tasks import build_segmentor
-from flexinfer.preprocess import transforms as TF
+from flexinfer.inference import build_inferencer
+from flexinfer.preprocess import preprocess as TF
 from flexinfer.postprocess import postprocess as PP
 from flexinfer.utils import set_device
 
@@ -39,9 +39,8 @@ def main(args):
 
     ## 2.3 model
     ###build segmentor with trt engine from onnx model or serialized engine
-    segmentor = build_segmentor(checkpoint=args.checkpoint,
-                                max_batch_size=2, fp16_mode=True)
-
+    segmentor = build_inferencer(checkpoint=args.checkpoint,
+                                 max_batch_size=2, fp16_mode=True)
 
     # 3. load image
     img = cv2.imread(args.imgfp)

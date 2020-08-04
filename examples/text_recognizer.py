@@ -8,8 +8,8 @@ import torch
 
 sys.path.insert(0, os.path.abspath('.'))
 
-from flexinfer.tasks import build_text_recognizer
-from flexinfer.preprocess import transforms as TF
+from flexinfer.inference import build_inferencer
+from flexinfer.preprocess import preprocess as TF
 from flexinfer.postprocess import SoftmaxProcess, IndexToString, Compose
 from flexinfer.utils import set_device
 
@@ -23,7 +23,7 @@ def main(imgfp):
     # 2. prepare for transfoms and model
     ## 2.1 transforms
     transform = TF.Compose([
-        TF.Resize(dst_shape=(100, 32), interp=cv2.INTER_LINEAR),
+        TF.Resize(dst_shape=(100, 32), interpolation=cv2.INTER_LINEAR),
         TF.ToTensor(use_gpu=use_gpu),
         TF.Normalize(mean=127.5, std=127.5, use_gpu=use_gpu, gray=True),
     ])
@@ -37,8 +37,8 @@ def main(imgfp):
 
     ## 2.3 model
     ## build text recognizer with trt engine from onnx model or serialized engine
-    text_recognizer = build_text_recognizer(checkpoint=args.checkpoint, max_batch_size=2,
-                                            fp16_mode=True)
+    text_recognizer = build_inferencer(checkpoint=args.checkpoint, max_batch_size=2,
+                                       fp16_mode=True)
 
     # 3. load image
     img = cv2.imread(imgfp)
