@@ -56,16 +56,16 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-1. Generate onnx model or trt engine by using volksdep.
+1. Generate onnx model or trt engine by using [volksdep](https://github.com/Media-Smart/volksdep).
 
-2. Example of deploying a task (eg. classifier), you can run the following statement:
+2. Example of deploying a task (eg. classifier), you can run the following statement.
 ```shell
 python examples/classifier.py checkpoint_path image_file
 ```
 
 ## [Media-smart toolboxes](https://github.com/Media-Smart)
 
-We provide some toolboxes for training, testing and deploying:
+We provide some toolboxes of different tasks for training, testing and deploying.
 
 - [x] Classification ([vedacls](https://github.com/Media-Smart/vedacls))
 

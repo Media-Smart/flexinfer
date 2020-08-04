@@ -51,7 +51,7 @@ def main(args):
     # 4. inference
     tensor = batchify(imgs)
     outp = segmentor(tensor)
-    outp = postprocess(outp, dim=1, shape_list=shape_list)
+    outp = postprocess(outp, shape_list=shape_list)
     print(outp)
 
 
