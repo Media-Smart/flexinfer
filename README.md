@@ -33,47 +33,47 @@ We have tested the following versions of OS and softwares:
 
 ### Install FlexInfer
 
-a. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
+1. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
 
-b. If your platform is x86 or x64, you can create a conda virtual environment and activate it.
+2. If your platform is x86 or x64, you can create a conda virtual environment and activate it.
 
-```shell
-conda create -n flexinfer python=3.6.9 -y
-conda activate flexinfer
-```
+  ```shell
+  conda create -n flexinfer python=3.6.9 -y
+  conda activate flexinfer
+  ```
 
-c. Clone the flexinfer repository.
+3. Clone the flexinfer repository.
 
 ```shell
 git clone https://github.com/Media-Smart/flexinfer
 cd flexinfer
 ```
 
-d. Install requirements.
+4. Install requirements.
 
 ```shell
 pip install -r requirements.txt
 ```
 
 ## Usage
-a. Generate onnx model or trt engine by using volksdep.
+1. Generate onnx model or trt engine by using volksdep.
 
-b. Example of deploying a task (eg. classifier), you can run the following statement:
+2. Example of deploying a task (eg. classifier), you can run the following statement:
 ```shell
 python examples/classifier.py checkpoint_path image_file
 ```
 
 ## [Media-smart toolboxes](https://github.com/Media-Smart)
 
-You can use the following toolboxes to generate your model.
+We provide some toolboxes to do train, test and deploy:
 
-a. [vedacls](https://github.com/Media-Smart/vedacls) an open source classification toolbox based on PyTorch.
+-[x] Classification ([vedacls](https://github.com/Media-Smart/vedacls))
 
-b. [vedaseg](https://github.com/Media-Smart/vedaseg) an open source semantic segmentation toolbox based on PyTorch.
+-[x] Segmentation ([vedaseg](https://github.com/Media-Smart/vedaseg))
 
-c. [vedastr](https://github.com/Media-Smart/vedastr) open source scene text recognition toolbox based on PyTorch.
+-[x] Scene text recognition ([vedastr](https://github.com/Media-Smart/vedastr))
 
 ## Contact
-This repository is currently maintained by Hongxiang Cai ([@hxcai](http://github.com/hxcai)), 
-Yichao Xiong ([@mileistone](https://github.com/mileistone)) Yuxin Zou ([@Yuxin Zou](https://github.com/YuxinZou))
-and Jun Sun([@ChaseMonsterAway](https://github.com/ChaseMonsterAway)).
+This repository is currently maintained by Yuxin Zou ([@Yuxin Zou](https://github.com/YuxinZou)),
+Jun Sun([@ChaseMonsterAway](https://github.com/ChaseMonsterAway)), Hongxiang Cai ([@hxcai](http://github.com/hxcai))
+and Yichao Xiong ([@mileistone](https://github.com/mileistone)).

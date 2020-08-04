@@ -1,1 +1,1 @@
-from .inferencer import build_inferencer
+from .inference import build_inferencer

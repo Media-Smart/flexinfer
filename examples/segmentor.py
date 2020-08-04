@@ -8,7 +8,7 @@ import torch
 sys.path.insert(0, os.path.abspath('.'))
 
 from flexinfer.inference import build_inferencer
-from flexinfer.preprocess import transforms as TF
+from flexinfer.preprocess import preprocess as TF
 from flexinfer.postprocess import postprocess as PP
 from flexinfer.utils import set_device
 
