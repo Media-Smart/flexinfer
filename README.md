@@ -31,8 +31,8 @@ We have tested the following versions of OS and softwares:
 - PyTorch 1.4.0
 - CUDA: 10.2
 
-## Speed Test
-- device: jetson tx2
+## Throughput benchmark
+- Device: Jetson AGX Xavier
 - CUDA: 10.2
 
 <table>
