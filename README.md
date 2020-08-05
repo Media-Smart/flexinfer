@@ -31,6 +31,74 @@ We have tested the following versions of OS and softwares:
 - PyTorch 1.4.0
 - CUDA: 10.2
 
+## Speed Test
+- device: jetson tx2
+- CUDA: 10.2
+
+<table>
+  <tr>
+    <td align="center" valign="center">Tasks</td>
+    <td align="center" valign="center">framework</td>
+    <td align="center" valign="center">version</td>
+    <td align="center" valign="center">input shape</td>
+    <td align="center" valign="center">data type</td>
+    <td align="center" valign="center">throughput(FPS)</td>
+    <td align="center" valign="center">latency(ms)</td>
+  </tr>
+  <tr>
+    <td rowspan="2" align="center" valign="center">segmentation（Unet）</td>
+    <td align="center" valign="center">pytorch</td>
+    <td align="center" valign="center">1.5.0</td>
+    <td align="center" valign="center">(1, 3, 513, 513)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">15</td>
+    <td align="center" valign="center">63.27</td>
+  </tr>
+  <tr>
+    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">7.1.0.16</td>
+    <td align="center" valign="center">(1, 3, 513, 513)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">29</td>
+    <td align="center" valign="center">34.03</td>
+  </tr>
+  <tr>
+    <td rowspan="2" align="center" valign="center">classification (Resnet18)</td>
+    <td align="center" valign="center">pytorch</td>
+    <td align="center" valign="center">1.5.0</td>
+    <td align="center" valign="center">(1, 3, 224, 224)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">172</td>
+    <td align="center" valign="center">6.01</td>
+  </tr>
+  <tr>
+    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">7.1.0.16</td>
+    <td align="center" valign="center">(1, 3, 224, 224)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">754</td>
+    <td align="center" valign="center">1.8</td>
+  </tr>
+  <tr>
+    <td rowspan="2" align="center" valign="center">text recognition (Rosetta)</td>
+    <td align="center" valign="center">pytorch</td>
+    <td align="center" valign="center">1.5.0</td>
+    <td align="center" valign="center">(1, 1, 32, 100)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">113</td>
+    <td align="center" valign="center">10.75</td>
+  </tr>
+  <tr>
+    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">7.1.0.16</td>
+    <td align="center" valign="center">(1, 1, 32, 100)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">308</td>
+    <td align="center" valign="center">3.55</td>
+  </tr>
+</table>
+
+
 ### Install FlexInfer
 
 1. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
