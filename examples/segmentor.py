@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath('.'))
 from flexinfer.inference import build_inferencer
 from flexinfer.preprocess import preprocess as TF
 from flexinfer.postprocess import postprocess as PP
-from flexinfer.utils import set_device
+from flexinfer.utils import set_device, Compose
 
 
 def main(args):
@@ -21,7 +21,7 @@ def main(args):
 
     # 2. prepare for transfoms and model
     ## 2.1 transforms
-    transform = TF.Compose([
+    transform = Compose([
         TF.PadIfNeeded(513, 513),
         TF.ToTensor(use_gpu=use_gpu),
         TF.Normalize(use_gpu=use_gpu),
@@ -29,7 +29,7 @@ def main(args):
     batchify = TF.Batchify(transform)
 
     ## 2.2 postprocess
-    postprocess = PP.Compose([
+    postprocess = Compose([
         ### for single-label mode
         PP.SoftmaxProcess(),
         ### for multi-label model

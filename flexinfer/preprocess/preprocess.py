@@ -1,25 +1,6 @@
 import cv2
-import torch
 import numpy as np
-
-
-class Compose:
-    """Composes several transforms together.
-       Args:
-           transforms (list of ``Transform`` objects): list of transforms to compose.
-       """
-
-    def __init__(self, transforms):
-        self.transforms = transforms
-
-    def __call__(self, img):
-        """
-        Args:
-            img(np.ndarray): image
-        """
-        for tf in self.transforms:
-            img = tf(img)
-        return img
+import torch
 
 
 class Resize:

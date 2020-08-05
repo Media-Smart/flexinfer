@@ -10,8 +10,8 @@ sys.path.insert(0, os.path.abspath('.'))
 
 from flexinfer.inference import build_inferencer
 from flexinfer.preprocess import preprocess as TF
-from flexinfer.postprocess import SoftmaxProcess, IndexToString, Compose
-from flexinfer.utils import set_device
+from flexinfer.postprocess import SoftmaxProcess, IndexToString
+from flexinfer.utils import set_device, Compose
 
 
 def main(imgfp):
@@ -22,7 +22,7 @@ def main(imgfp):
 
     # 2. prepare for transfoms and model
     ## 2.1 transforms
-    transform = TF.Compose([
+    transform = Compose([
         TF.Resize(dst_shape=(100, 32), interpolation=cv2.INTER_LINEAR),
         TF.ToTensor(use_gpu=use_gpu),
         TF.Normalize(mean=127.5, std=127.5, use_gpu=use_gpu, gray=True),

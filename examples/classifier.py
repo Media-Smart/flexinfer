@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath('.'))
 
 from flexinfer.inference import build_inferencer
 from flexinfer.preprocess import preprocess as TF
-from flexinfer.utils import set_device
+from flexinfer.utils import set_device, Compose
 
 
 def main(imgfp):
@@ -20,7 +20,7 @@ def main(imgfp):
 
     # 2. prepare for transfoms and model
     ## 2.1 transforms
-    transform = TF.Compose([
+    transform = Compose([
         TF.Resize((224, 224)),
         TF.ToTensor(use_gpu=use_gpu),
         TF.Normalize(use_gpu=use_gpu),

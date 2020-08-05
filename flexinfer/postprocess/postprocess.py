@@ -1,25 +1,6 @@
 import torch
 
 
-class Compose:
-    """Composes several postprocess together.
-    Args:
-        postprocess (list of ``Postprocess`` objects): list of postprocess to compose.
-    """
-
-    def __init__(self, postprocess):
-        self.postprocess = postprocess
-
-    def __call__(self, inp, **kwargs):
-        """
-        Args:
-            inp(torch.tensor): tensor, shape B*C*H*W
-        """
-        for pp in self.postprocess:
-            inp = pp(inp, **kwargs)
-        return inp
-
-
 class SoftmaxProcess:
     def __init__(self, dim=1):
         self.dim = dim
