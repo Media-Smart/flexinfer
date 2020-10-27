@@ -22,9 +22,8 @@ class Inferencer:
         Returns:
             outp (torch.float32)
         """
-        with torch.no_grad():
-            imgs = imgs.cuda()
-            outp = self.model(imgs)
+        imgs = imgs.cuda()
+        outp = self.model(imgs)
 
         return outp
 
