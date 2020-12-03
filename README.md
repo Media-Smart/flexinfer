@@ -106,6 +106,23 @@ We provide some examples for different tasks.
     <td align="center" valign="center">29</td>
     <td align="center" valign="center">34.03</td>
   </tr>
+    <tr>
+    <td rowspan="2" align="center" valign="center">Object Detection（RetinaNet-Resnet50）</td>
+    <td align="center" valign="center">pytorch</td>
+    <td align="center" valign="center">1.5.0</td>
+    <td align="center" valign="center">(1, 3, 768, 1280)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">8</td>
+    <td align="center" valign="center">118.79</td>
+  </tr>
+  <tr>
+    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">7.1.0.16</td>
+    <td align="center" valign="center">(1, 3, 768, 1280)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">15</td>
+    <td align="center" valign="center">68.10</td>
+  </tr>
   <tr>
     <td rowspan="2" align="center" valign="center">Scene Text Recognition (ResNet-CTC)</td>
     <td align="center" valign="center">pytorch</td>
