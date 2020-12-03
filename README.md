@@ -41,13 +41,9 @@ We have tested the following versions of OS and softwares:
   conda activate flexinfer
   ```
 
-2. Install TensorRT following the [official instructions](https://developer.nvidia.com/tensorrt/)
+2. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
 
-3. Install PyTorch following the [official instructions](https://pytorch.org/)
-
-4. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
-
-4. Setup
+3. Setup
 
 ```shell
 pip install "git+https://github.com/Media-Smart/flexinfer.git"
@@ -76,25 +72,8 @@ We provide some examples for different tasks.
     <td align="center" valign="center">throughput(FPS)</td>
     <td align="center" valign="center">latency(ms)</td>
   </tr>
-  <tr>
-    <td rowspan="2" align="center" valign="center">segmentation（Unet）</td>
-    <td align="center" valign="center">pytorch</td>
-    <td align="center" valign="center">1.5.0</td>
-    <td align="center" valign="center">(1, 3, 513, 513)</td>
-    <td align="center" valign="center">fp16</td>
-    <td align="center" valign="center">15</td>
-    <td align="center" valign="center">63.27</td>
-  </tr>
-  <tr>
-    <td align="center" valign="center">tensorrt</td>
-    <td align="center" valign="center">7.1.0.16</td>
-    <td align="center" valign="center">(1, 3, 513, 513)</td>
-    <td align="center" valign="center">fp16</td>
-    <td align="center" valign="center">29</td>
-    <td align="center" valign="center">34.03</td>
-  </tr>
-  <tr>
-    <td rowspan="2" align="center" valign="center">classification (Resnet18)</td>
+    <tr>
+    <td rowspan="2" align="center" valign="center">Classification (Resnet18)</td>
     <td align="center" valign="center">pytorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 3, 224, 224)</td>
@@ -111,7 +90,24 @@ We provide some examples for different tasks.
     <td align="center" valign="center">1.8</td>
   </tr>
   <tr>
-    <td rowspan="2" align="center" valign="center">text recognition (Rosetta)</td>
+    <td rowspan="2" align="center" valign="center">Segmentation（Unet）</td>
+    <td align="center" valign="center">pytorch</td>
+    <td align="center" valign="center">1.5.0</td>
+    <td align="center" valign="center">(1, 3, 513, 513)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">15</td>
+    <td align="center" valign="center">63.27</td>
+  </tr>
+  <tr>
+    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">7.1.0.16</td>
+    <td align="center" valign="center">(1, 3, 513, 513)</td>
+    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">29</td>
+    <td align="center" valign="center">34.03</td>
+  </tr>
+  <tr>
+    <td rowspan="2" align="center" valign="center">Scene Text Recognition (ResNet-CTC)</td>
     <td align="center" valign="center">pytorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 1, 32, 100)</td>
