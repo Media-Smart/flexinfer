@@ -1,5 +1,5 @@
 # FlexInfer
-A flexible Python front-end inference SDK.
+A flexible python front-end inference SDK.
 
 ## Features
 - Flexible
@@ -21,15 +21,46 @@ This project is released under [Apache 2.0 license](https://github.com/Media-Sma
 - TensorRT 7.1.3.4 or higher
 - PyTorch 1.4.0 or higher
 - CUDA 10.2 or higher
-- volksdep
+- [volksdep](https://github.com/Media-Smart/volksdep.git) 3.2.0 or higher
 
 We have tested the following versions of OS and softwares:
 
 - OS: Ubuntu 16.04.6 LTS
 - Python 3.6.9
-- TensorRT 7.0.0.11
-- PyTorch 1.4.0
+- TensorRT 7.1.3.4
+- PyTorch 1.6.0
 - CUDA: 10.2
+- volksdep: 3.2.0
+
+### Install FlexInfer
+
+1. If your platform is x86 or x64, you can create a conda virtual environment and activate it.
+
+  ```shell
+  conda create -n flexinfer python=3.6.9 -y
+  conda activate flexinfer
+  ```
+
+2. Install TensorRT following the [official instructions](https://developer.nvidia.com/tensorrt/)
+
+3. Install PyTorch following the [official instructions](https://pytorch.org/)
+
+4. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
+
+4. Setup
+
+```shell
+pip install "git+https://github.com/Media-Smart/flexinfer.git"
+```
+
+## Usage
+
+We provide some examples for different tasks.
+
+- [Classification](https://github.com/Media-Smart/flexinfer/blob/master/examples/classification)
+- [Segmentation](https://github.com/Media-Smart/flexinfer/blob/master/examples/object_detection)
+- [Object Detection](https://github.com/Media-Smart/flexinfer/blob/master/examples/scene_text_recognition)
+- [Scene Text Recognition](https://github.com/Media-Smart/flexinfer/tree/master/examples/segmentation)
 
 ## Throughput benchmark
 - Device: Jetson AGX Xavier
@@ -99,39 +130,7 @@ We have tested the following versions of OS and softwares:
 </table>
 
 
-### Install FlexInfer
-
-1. Install volksdep following the [official instructions](https://github.com/Media-Smart/volksdep)
-
-2. If your platform is x86 or x64, you can create a conda virtual environment and activate it.
-
-  ```shell
-  conda create -n flexinfer python=3.6.9 -y
-  conda activate flexinfer
-  ```
-
-3. Clone the flexinfer repository.
-
-```shell
-git clone https://github.com/Media-Smart/flexinfer
-cd flexinfer
-```
-
-4. Install requirements.
-
-```shell
-pip install -r requirements.txt
-```
-
-## Usage
-1. Generate onnx model or trt engine by using [volksdep](https://github.com/Media-Smart/volksdep).
-
-2. Example of deploying a task (eg. classifier), you can run the following statement.
-```shell
-python examples/classifier.py checkpoint_path image_file
-```
-
-## [Media-smart toolboxes](https://github.com/Media-Smart)
+## [Media-Smart toolboxes](https://github.com/Media-Smart)
 
 We provide some toolboxes of different tasks for training, testing and deploying.
 
@@ -139,7 +138,9 @@ We provide some toolboxes of different tasks for training, testing and deploying
 
 - [x] Segmentation ([vedaseg](https://github.com/Media-Smart/vedaseg))
 
-- [x] Scene text recognition ([vedastr](https://github.com/Media-Smart/vedastr))
+- [x] Object Detection ([vedadet](https://github.com/Media-Smart/vedadet))
+
+- [x] Scene Text Recognition ([vedastr](https://github.com/Media-Smart/vedastr))
 
 ## Contact
 This repository is currently maintained by Yuxin Zou ([@Yuxin Zou](https://github.com/YuxinZou)),
