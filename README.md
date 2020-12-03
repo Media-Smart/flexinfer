@@ -53,10 +53,10 @@ pip install "git+https://github.com/Media-Smart/flexinfer.git"
 
 We provide some examples for different tasks.
 
-- [Classification](https://github.com/Media-Smart/flexinfer/blob/master/examples/classification)
-- [Segmentation](https://github.com/Media-Smart/flexinfer/blob/master/examples/object_detection)
-- [Object Detection](https://github.com/Media-Smart/flexinfer/blob/master/examples/scene_text_recognition)
-- [Scene Text Recognition](https://github.com/Media-Smart/flexinfer/tree/master/examples/segmentation)
+- [Classification](https://github.com/Media-Smart/flexinfer/tree/master/examples/classification)
+- [Segmentation](https://github.com/Media-Smart/flexinfer/tree/master/examples/segmentation)
+- [Object Detection](https://github.com/Media-Smart/flexinfer/tree/master/examples/object_detection)
+- [Scene Text Recognition](https://github.com/Media-Smart/flexinfer/tree/master/examples/scene_text_recognition)
 
 ## Throughput benchmark
 - Device: Jetson AGX Xavier
