@@ -22,8 +22,8 @@ model = dict(
     typename='Onnx',
     model='retinanet_r50.onnx',
     max_batch_size=1,
-    min_input_shapes=[(3, 128, 128)],       # shape format, CxHxW
-    max_input_shapes=[(3, 1408, 1408)],     # shape format, CxHxW
+    min_input_shapes=[(3, 128, 128)],       # Should be set when onnx model has dynamic shapes, the shape format is CxHxW. Otherwise, set None.
+    max_input_shapes=[(3, 1408, 1408)],     # Should be set when onnx model has dynamic shapes, the shape format is CxHxW. Otherwise, set None.
     fp16_mode=True)
 
 # 4. postprocess
