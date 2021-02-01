@@ -11,7 +11,7 @@ preprocess = dict(
     pipeline=[
         dict(typename='Resize', dst_shape=(800, 1333), keep_ratio=True),
         dict(typename='ToFloat', keys=['img']),
-        dict(typename='PadIfNeeded', size_divisor=128,
+        dict(typename='PadIfNeeded', size_divisor=size_divisor,
              value=img_norm_cfg['mean'][::-1]),
         dict(typename='ImageToTensor', use_gpu=True),
         dict(typename='Normalize', **img_norm_cfg, use_gpu=True),
