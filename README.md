@@ -1,5 +1,5 @@
 # FlexInfer
-A flexible python front-end inference SDK.
+A flexible Python front-end inference SDK.
 
 ## Features
 - Flexible
@@ -73,28 +73,28 @@ We provide some examples for different tasks.
     <td align="center" valign="center">latency(ms)</td>
   </tr>
     <tr>
-    <td rowspan="2" align="center" valign="center">Classification (Resnet18)</td>
-    <td align="center" valign="center">pytorch</td>
+    <td rowspan="2" align="center" valign="center">Classification (ResNet18)</td>
+    <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 3, 224, 224)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">172</td>
     <td align="center" valign="center">6.01</td>
   </tr>
   <tr>
-    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">TensorRT</td>
     <td align="center" valign="center">7.1.0.16</td>
     <td align="center" valign="center">(1, 3, 224, 224)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">754</td>
     <td align="center" valign="center">1.8</td>
   </tr>
   <tr>
-    <td rowspan="2" align="center" valign="center">Segmentation（Unet）</td>
-    <td align="center" valign="center">pytorch</td>
+    <td rowspan="2" align="center" valign="center">Segmentation（U-Net）</td>
+    <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 3, 513, 513)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">15</td>
     <td align="center" valign="center">63.27</td>
   </tr>
@@ -102,41 +102,41 @@ We provide some examples for different tasks.
     <td align="center" valign="center">tensorrt</td>
     <td align="center" valign="center">7.1.0.16</td>
     <td align="center" valign="center">(1, 3, 513, 513)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">29</td>
     <td align="center" valign="center">34.03</td>
   </tr>
     <tr>
-    <td rowspan="2" align="center" valign="center">Object Detection（RetinaNet-Resnet50）</td>
-    <td align="center" valign="center">pytorch</td>
+    <td rowspan="2" align="center" valign="center">Object Detection（RetinaNet-ResNet50）</td>
+    <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 3, 768, 1280)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">8</td>
     <td align="center" valign="center">118.79</td>
   </tr>
   <tr>
-    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">TensorRT</td>
     <td align="center" valign="center">7.1.0.16</td>
     <td align="center" valign="center">(1, 3, 768, 1280)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">15</td>
     <td align="center" valign="center">68.10</td>
   </tr>
   <tr>
     <td rowspan="2" align="center" valign="center">Scene Text Recognition (ResNet-CTC)</td>
-    <td align="center" valign="center">pytorch</td>
+    <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 1, 32, 100)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">113</td>
     <td align="center" valign="center">10.75</td>
   </tr>
   <tr>
-    <td align="center" valign="center">tensorrt</td>
+    <td align="center" valign="center">TensorRT</td>
     <td align="center" valign="center">7.1.0.16</td>
     <td align="center" valign="center">(1, 1, 32, 100)</td>
-    <td align="center" valign="center">fp16</td>
+    <td align="center" valign="center">FP16</td>
     <td align="center" valign="center">308</td>
     <td align="center" valign="center">3.55</td>
   </tr>
