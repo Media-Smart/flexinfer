@@ -64,7 +64,7 @@ We provide some examples for different tasks.
 
 <table>
   <tr>
-    <td align="center" valign="center">Tasks</td>
+    <td colspan="2" align="center" valign="center">Tasks</td>
     <td align="center" valign="center">framework</td>
     <td align="center" valign="center">version</td>
     <td align="center" valign="center">input shape</td>
@@ -73,7 +73,7 @@ We provide some examples for different tasks.
     <td align="center" valign="center">latency(ms)</td>
   </tr>
     <tr>
-    <td rowspan="2" align="center" valign="center">Classification (ResNet18)</td>
+    <td rowspan="2" colspan="2" align="center" valign="center">Classification (ResNet18)</td>
     <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 3, 224, 224)</td>
@@ -90,7 +90,7 @@ We provide some examples for different tasks.
     <td align="center" valign="center">1.8</td>
   </tr>
   <tr>
-    <td rowspan="2" align="center" valign="center">Segmentation（U-Net）</td>
+    <td rowspan="2" colspan="2" align="center" valign="center">Segmentation（U-Net）</td>
     <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 3, 513, 513)</td>
@@ -107,7 +107,8 @@ We provide some examples for different tasks.
     <td align="center" valign="center">34.03</td>
   </tr>
     <tr>
-    <td rowspan="2" align="center" valign="center">Object Detection（RetinaNet-ResNet50）</td>
+    <td rowspan="4" align="center" valign="center">Object Detection</td>
+    <td rowspan="2" align="center" valign="center">RetinaNet-R50</td>
     <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 3, 768, 1280)</td>
@@ -124,7 +125,24 @@ We provide some examples for different tasks.
     <td align="center" valign="center">68.10</td>
   </tr>
   <tr>
-    <td rowspan="2" align="center" valign="center">Scene Text Recognition (ResNet-CTC)</td>
+    <td rowspan="2" align="center" valign="center">TinaFace-R50-FPN-BN</td>
+    <td align="center" valign="center">PyTorch</td>
+    <td align="center" valign="center">1.5.0</td>
+    <td align="center" valign="center">(1, 3, 768, 1280)</td>
+    <td align="center" valign="center">FP16</td>
+    <td align="center" valign="center">3</td>
+    <td align="center" valign="center">273.60</td>
+  </tr>
+    <tr>
+    <td align="center" valign="center">TensorRT</td>
+    <td align="center" valign="center">7.1.0.16</td>
+    <td align="center" valign="center">(1, 3, 768, 1280)</td>
+    <td align="center" valign="center">FP16</td>
+    <td align="center" valign="center">6</td>
+    <td align="center" valign="center">159.70</td>
+  </tr>
+  <tr>
+    <td rowspan="2" colspan="2" align="center" valign="center">Scene Text Recognition (ResNet-CTC)</td>
     <td align="center" valign="center">PyTorch</td>
     <td align="center" valign="center">1.5.0</td>
     <td align="center" valign="center">(1, 1, 32, 100)</td>
