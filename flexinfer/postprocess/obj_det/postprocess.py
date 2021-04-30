@@ -18,13 +18,16 @@ class ObjDetPostProcess(Base):
             self.cls_out_channels = num_classes
         else:
             self.cls_out_channels = num_classes + 1
+        self.num_fpn_lvls = len(self.meshgrid.strides)
         self.infer_cfg = infer_cfg
 
     def _get_raw_dets(self, feats, img_metas):
         feats_len = len(feats)
-        assert feats_len % 2 == 0
-        half_len = feats_len // 2
-        feats = [feats[:half_len], feats[half_len:]]
+        
+        assert feats_len % self.num_fpn_lvls == 0
+        
+        feats = [feats[i:i + self.num_fpn_lvls] 
+                for i in range(0, feats_len, self.num_fpn_lvls)]
 
         featmap_sizes = [feat.shape[-2:] for feat in feats[0]]
         dtype = feats[0][0].dtype

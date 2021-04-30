@@ -3,6 +3,7 @@ from enum import Enum
 
 import cv2
 import numpy as np
+
 from flexinfer.misc import Config, set_device
 from flexinfer.preprocess import build_preprocess
 from flexinfer.model import build_model
